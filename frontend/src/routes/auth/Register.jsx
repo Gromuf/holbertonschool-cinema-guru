@@ -1,36 +1,34 @@
 import React from "react";
-import "./auth.css";
+import Input from "../../components/general/Input";
+import Button from "../../components/general/Button";
+import { faUser, faKey, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Register = ({ username, password, setUsername, setPassword }) => {
   return (
     <div className="form-content">
       <h2 className="form-title">Create a new account</h2>
-      <div className="input-group">
-        <label htmlFor="register-username">👤 Username:</label>
-        <input 
-          type="text" 
-          id="register-username"
-          value={username} 
-          onChange={(e) => setUsername(e.target.value)} 
-          placeholder="Choose a username"
-          autoComplete="one-time-code"
-        />
-      </div>
-      <div className="input-group">
-        <label htmlFor="register-password">🔑 Password:</label>
-        <input 
-          type="password" 
-          id="register-password"
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          placeholder="Choose a password"
-          autoComplete="one-time-code"
-        />
-      </div>
+      <Input 
+        label="Username:"
+        type="text"
+        value={username}
+        setValue={setUsername}
+        icon={faUser}
+        inputAttributes={{ placeholder: "Choose a username", autoComplete: "one-time-code" }}
+      />
+      <Input 
+        label="Password:"
+        type="password"
+        value={password}
+        setValue={setPassword}
+        icon={faKey}
+        inputAttributes={{ placeholder: "Choose a password", autoComplete: "one-time-code" }}
+      />
       <div className="submit-container">
-        <button type="submit" className="main-submit-btn">
-          + Sign Up
-        </button>
+        <Button 
+          label="Sign Up"
+          className="main-submit-btn"
+          icon={faPlus}
+        />
       </div>
     </div>
   );
