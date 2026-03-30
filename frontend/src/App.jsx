@@ -1,56 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
-import Input from './components/general/Input';
-import SelectInput from './components/general/SelectInput';
-import Button from './components/general/Button';
-import SearchBar from './components/general/SearchBar';
-import { faEnvelope, faPlay } from '@fortawesome/free-solid-svg-icons';
+
+// Temporary placeholders for components we will build next
+const Authentication = () => <div className="Authentication">Authentication Component (Login/Register)</div>;
+const Dashboard = ({ userUsername }) => <div className="Dashboard">Welcome, {userUsername}!</div>;
 
 function App() {
-  const [email, setEmail] = useState("");
-  const [genre, setGenre] = useState("action");
-  const [search, setSearch] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userUsername, setUserUsername] = useState("");
 
-  const genres = [
-    { value: 'action', label: 'Action' },
-    { value: 'comedy', label: 'Comedy' },
-    { value: 'drama', label: 'Drama' }
-  ];
+  useEffect(() => {
+    const checkAuth = async () => {
+      const accessToken = localStorage.getItem('accessToken');
+      if (accessToken) {
+        try {
+          const response = await axios.post(
+            'http://localhost:8000/api/auth/', 
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
+          );
+          if (response.status === 200) {
+            setIsLoggedIn(true);
+            setUserUsername(response.data.username);
+          }
+        } catch (error) {
+          console.error("Auth check failed:", error);
+        }
+      }
+    };
+
+    checkAuth();
+  }, []);
 
   return (
-    <div className="App" style={{ padding: '50px', backgroundColor: '#080202', minHeight: '100vh' }}>
-      <h1 style={{ color: 'white', marginBottom: '30px' }}>Test des Composants General</h1>
-      
-      <div style={{ maxWidth: '400px' }}>
-        {/* Test SearchBar */}
-        <SearchBar title={search} setTitle={setSearch} />
-        <p style={{ color: 'gray', marginBottom: '20px' }}>Recherche : {search}</p>
-
-        {/* Test Input avec Icône */}
-        <Input 
-          label="Email Address"
-          type="email"
-          value={email}
-          setValue={setEmail}
-          icon={faEnvelope}
-          inputAttributes={{ placeholder: 'Enter your email' }}
-        />
-
-        {/* Test SelectInput */}
-        <SelectInput 
-          label="Favorite Genre"
-          options={genres}
-          value={genre}
-          setValue={setGenre}
-        />
-
-        {/* Test Button */}
-        <Button 
-          label="Watch Now"
-          icon={faPlay}
-          onClick={() => alert('Cliqué !')}
-        />
-      </div>
+    <div className="App">
+      {isLoggedIn ? (
+        <Dashboard userUsername={userUsername} />
+      ) : (
+        <Authentication />
+      )}
     </div>
   );
 }
