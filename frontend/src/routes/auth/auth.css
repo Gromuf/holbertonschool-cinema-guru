@@ -1,0 +1,118 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-form {
+  background-color: #ffffff;
+  width: 450px;
+  min-height: 420px;
+  border: 5px solid #222;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.auth-header {
+  display: flex;
+  height: 60px;
+}
+
+.auth-header button {
+  flex: 1;
+  border: none;
+  background-color: #ce3419;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, filter 0.3s;
+}
+
+.auth-header button:hover,
+.auth-header button.active {
+  filter: brightness(0.8);
+  cursor: default;
+}
+
+.auth-header button.active:hover {
+  filter: brightness(0.8);
+}
+
+.form-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  color: #222;
+  font-weight: 600;
+}
+
+.input-group {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+
+.input-group input {
+  border: none;
+  border-bottom: 1.5px solid #ce3419;
+  padding: 10px 0;
+  outline: none;
+  font-size: 1.1rem !important;
+  font-family: 'Roboto', sans-serif !important;
+  background-color: white !important;
+  color: #000 !important;
+}
+
+/* FIX AUTOFILL : Empêche le changement de couleur et de taille au clic/load */
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover, 
+.input-group input:-webkit-autofill:focus,
+.input-group input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-text-fill-color: black !important;
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 1.1rem !important;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.main-submit-btn {
+  background-color: #ce3419;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.main-submit-btn:hover {
+  filter: brightness(0.85);
+}

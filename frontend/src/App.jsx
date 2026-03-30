@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+// Import du vrai composant Authentication
+import Authentication from './routes/auth/Authentication';
 
-// Temporary placeholders for components we will build next
-const Authentication = () => <div className="Authentication">Authentication Component (Login/Register)</div>;
+// Placeholder pour le Dashboard (à remplacer plus tard par ton vrai composant)
 const Dashboard = ({ userUsername }) => <div className="Dashboard">Welcome, {userUsername}!</div>;
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
             setUserUsername(response.data.username);
           }
         } catch (error) {
+          // Si le token est invalide ou expiré, on nettoie le localStorage
+          localStorage.removeItem('accessToken');
           console.error("Auth check failed:", error);
         }
       }
@@ -42,7 +45,11 @@ function App() {
       {isLoggedIn ? (
         <Dashboard userUsername={userUsername} />
       ) : (
-        <Authentication />
+        // On passe les fonctions de modification d'état à Authentication
+        <Authentication 
+          setIsLoggedIn={setIsLoggedIn} 
+          setUserUsername={setUserUsername} 
+        />
       )}
     </div>
   );
