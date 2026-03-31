@@ -1,0 +1,22 @@
+.activity-item {
+  list-style: none;
+  padding: 10px 0;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.activity-item p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* La couleur rouge spécifique du projet Cinema Guru */
+.red-text {
+  color: #ce3449;
+  font-weight: bold;
+}
+
+.activity-item i {
+  color: #b3b3b3;
+  font-style: italic;
+}

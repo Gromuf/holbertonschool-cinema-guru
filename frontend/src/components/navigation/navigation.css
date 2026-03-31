@@ -1,4 +1,4 @@
-/* --- La barre nav (le conteneur principal) --- */
+/* --- HEADER NAVIGATION (Barre du haut) --- */
 .header-nav {
   display: flex;
   justify-content: space-between;
@@ -10,21 +10,19 @@
   box-sizing: border-box;
 }
 
-/* --- Le Titre (Gauche) --- */
 .header-title {
   font-size: 24px;
   font-weight: bold;
   margin: 0;
+  color: white;
 }
 
-/* --- Le Groupe d'infos (Droite) --- */
 .header-user-info {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-/* --- L'image (Avatar) --- */
 .header-user-info img {
   width: 40px;
   height: 40px;
@@ -33,13 +31,12 @@
   border: 2px solid white;
 }
 
-/* --- Le texte "Welcome, ..." --- */
 .header-user-info p {
   margin: 0;
   font-size: 16px;
+  color: white;
 }
 
-/* --- Le bouton Logout (Icône + Texte) --- */
 .logout-button {
   display: flex;
   align-items: center;
@@ -48,15 +45,114 @@
   font-size: 14px;
   opacity: 0.8;
   transition: opacity 0.2s ease;
+  color: white;
 }
 
-/* --- L'icône de logout spécifique (si FontAwesome est utilisé) --- */
-.logout-button svg {
-  font-size: 16px;
-}
-
-/* --- Effet au survol du bouton Logout --- */
 .logout-button:hover {
   opacity: 1;
   color: #ff4d4d;
+}
+
+/* --- SIDEBAR (Conteneur principal) --- */
+.sidebar {
+  background-color: #ce3449; /* Rouge Cinema Guru */
+  min-height: calc(100vh - 80px);
+  height: 100%;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  /* Ajoute l'espace rouge entre le header noir et le premier item */
+  padding-top: 20px; 
+}
+
+.sidebar.small {
+  width: 80px;
+}
+
+.sidebar:not(.small) {
+  width: 250px;
+}
+
+/* --- MENU DE NAVIGATION --- */
+.navigation-ul {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation-ul li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 15px 25px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+.navigation-ul li:hover {
+  background-color: rgba(0, 0, 0, 0.15); /* Assombrit légèrement au survol */
+}
+
+.navigation-ul li.active {
+  background-color: rgba(0, 0, 0, 0.3); /* Plus sombre pour l'item sélectionné */
+  border-left: 5px solid white; /* Trait blanc à gauche */
+}
+
+.navigation-ul li span:not(.arrow) {
+  margin-left: 15px;
+}
+
+.arrow {
+  margin-left: auto;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.navigation-ul li svg {
+  min-width: 20px;
+}
+
+/* --- LATEST ACTIVITIES (Le bloc gris avec contour rouge) --- */
+.activities-container {
+  background-color: #222222; /* Gris foncé */
+  /* margin: haut, gauche/droite (auto pour centrer), bas */
+  margin: 20px auto 20px auto; 
+  /* Largeur à 90% pour créer l'espace rouge identique à gauche et à droite */
+  width: 90%; 
+  padding: 20px 0;
+  flex-grow: 1; /* Permet au bloc de descendre en bas de page */
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.activities-title {
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 auto 15px auto;
+  width: 85%; /* Largeur de la ligne de soulignement */
+  padding-bottom: 10px;
+  /* Ligne rouge sous le titre comme sur le modèle */
+  border-bottom: 2px solid #ce3449; 
+}
+
+.activity-list {
+  list-style: none;
+  padding: 0 15px;
+  margin: 0;
+}
+
+/* Pour le texte des activités si besoin */
+.activity-list li {
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
 }
