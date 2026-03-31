@@ -55,7 +55,7 @@
 
 /* --- SIDEBAR (Conteneur principal) --- */
 .sidebar {
-  background-color: #ce3449; /* Rouge Cinema Guru */
+  background-color: #ce3449;
   min-height: calc(100vh - 80px);
   height: 100%;
   transition: width 0.3s ease;
@@ -64,7 +64,6 @@
   color: white;
   overflow-x: hidden;
   box-sizing: border-box;
-  /* Ajoute l'espace rouge entre le header noir et le premier item */
   padding-top: 20px; 
 }
 
@@ -96,12 +95,12 @@
 }
 
 .navigation-ul li:hover {
-  background-color: rgba(0, 0, 0, 0.15); /* Assombrit légèrement au survol */
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .navigation-ul li.active {
-  background-color: rgba(0, 0, 0, 0.3); /* Plus sombre pour l'item sélectionné */
-  border-left: 5px solid white; /* Trait blanc à gauche */
+  background-color: rgba(0, 0, 0, 0.3);
+  border-left: 5px solid white;
 }
 
 .navigation-ul li span:not(.arrow) {
@@ -120,13 +119,11 @@
 
 /* --- LATEST ACTIVITIES (Le bloc gris avec contour rouge) --- */
 .activities-container {
-  background-color: #222222; /* Gris foncé */
-  /* margin: haut, gauche/droite (auto pour centrer), bas */
+  background-color: #222222;
   margin: 20px auto 20px auto; 
-  /* Largeur à 90% pour créer l'espace rouge identique à gauche et à droite */
   width: 90%; 
   padding: 20px 0;
-  flex-grow: 1; /* Permet au bloc de descendre en bas de page */
+  flex-grow: 1;
   box-sizing: border-box;
   border-radius: 4px;
 }
@@ -138,9 +135,8 @@
   font-weight: bold;
   text-transform: uppercase;
   margin: 0 auto 15px auto;
-  width: 85%; /* Largeur de la ligne de soulignement */
+  width: 85%;
   padding-bottom: 10px;
-  /* Ligne rouge sous le titre comme sur le modèle */
   border-bottom: 2px solid #ce3449; 
 }
 
@@ -150,7 +146,6 @@
   margin: 0;
 }
 
-/* Pour le texte des activités si besoin */
 .activity-list li {
   font-size: 0.85rem;
   margin-bottom: 10px;
