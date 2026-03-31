@@ -6,9 +6,9 @@ const Activity = ( { activity }) => {
   return (
     <li className="activity-item">
       <p>
-        <span className="red-text">{user}</span>
+        <span className="red-text">{user.username}</span>
         {` ${action} `}
-        <span className="red-text">{title}</span>
+        <span className="red-text">{title?.title}</span>
         {`-`}
         <i>{date}</i>
       </p>

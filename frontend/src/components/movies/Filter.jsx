@@ -1,5 +1,5 @@
 import React from "react";
-import "./movie.css";
+import "./movies.css";
 import SearchBar from "../general/SearchBar";
 import Input from "../general/Input";
 import SelectInput from "../general/SelectInput";

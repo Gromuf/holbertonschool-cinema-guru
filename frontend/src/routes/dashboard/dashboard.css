@@ -1,22 +1,61 @@
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   background: linear-gradient(180deg, #1a1a1a 0%, #080808 100%);
   margin: 0;
   padding: 0;
+  overflow: hidden;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1100;
 }
 
 .dashboard-main {
   display: flex;
   flex: 1;
-  align-items: stretch;
+  margin-top: 70px;
+  height: calc(100vh - 70px);
+}
+
+.sidebar {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  height: calc(100vh - 70px);
+  z-index: 1050;
 }
 
 .dashboard-content {
   flex: 1;
   padding: 20px;
+  margin-left: 80px; 
   overflow-y: auto;
   color: white;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar:not(.small) + .dashboard-content {
+  margin-left: 250px;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 20px 0;
+}
+
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
 }

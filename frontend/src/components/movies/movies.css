@@ -44,11 +44,11 @@
 }
 
 .favorite-icon.active {
-  color: #f1c40f; /* Or pour l'étoile */
+  color: #f1c40f;
 }
 
 .watchlater-icon.active {
-  color: #ce3449; /* Rouge Cinema Guru pour l'horloge */
+  color: #ce3449;
 }
 
 .genre-badge {
@@ -58,4 +58,34 @@
   border-radius: 4px;
   margin-right: 5px;
   font-size: 0.8rem;
+}
+
+.movie-card-poster {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-poster {
+  transform: scale(1.05);
+}
+
+.movie-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 20px;
 }

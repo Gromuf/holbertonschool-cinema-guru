@@ -3,11 +3,13 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faClock } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farStar, faClock as farClock } from "@fortawesome/free-regular-svg-icons";
-import "./movie.css";
+import "./movies.css";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, refreshActivities }) => {
 	const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
+
+  const movieImage = (movie.imageurls && movie.imageurls.length > 0) ? movie.imageurls[0] : "https://via.placeholder.com/250x350?text=No+Image";
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     const headers = { Authorization: `Bearer ${token}` };
@@ -32,18 +34,25 @@ const MovieCard = ({ movie }) => {
     const setState = type === "favorite" ? setIsFavorite : setIsWatchLater;
     if (isStateSet) {
       axios.delete(`/api/titles/${type}/${movie.imdbId}`, { headers })
-        .then(() => setState(false))
+        .then(() => {
+          setState(false);
+          refreshActivities();
+        })
         .catch((err) => console.error(`Error removing from ${type}`, err));
     } else {
       axios.post(`/api/titles/${type}/${movie.imdbId}`, {}, { headers })
-        .then(() => setState(true))
+        .then(() => {
+          setState(true);
+          refreshActivities();
+        })
         .catch((err) => console.error(`Error adding to ${type}`, err));
     }
   };
 
   return (
     <li className="movie-card">
-      <div className="movie-card-header">
+      <div className="movie-card-poster">
+        <img src={movieImage} alt={movie.title} className="movie-poster" />
         <div className="movie-actions">
           <FontAwesomeIcon 
             icon={isFavorite ? faStar : farStar} 
