@@ -7,32 +7,19 @@
 }
 
 /* --- Conteneurs --- */
-.input-container, .select-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 25px;
-  width: 100%;
-}
-
 .input-container label, .select-container label {
+  color: var(--text-light); 
   font-size: 1rem;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
-  color: var(--text-dark);
   font-weight: 500;
 }
 
 /* --- Wrapper pour Icône --- */
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
 .input-icon {
   margin-right: 10px;
-  color: var(--text-dark);
+  color: var(--text-light); 
 }
 
 /* --- Input, Select & Search --- */
@@ -45,19 +32,29 @@ input, .select-input, .search-bar {
   font-size: 1.1rem;
   font-family: 'Roboto', sans-serif;
   background-color: transparent !important;
-  color: var(--text-dark);
+  color: var(--text-light); 
   transition: border-bottom-width 0.2s;
 }
 
-input:focus, .select-input:focus {
-  border-bottom-width: 3px;
+.select-input {
+  background-color: transparent !important;
+  color: var(--text-light) !important;
 }
 
-/* Fix spécifique pour la SearchBar (Style arrondi si tu préfères la garder différente) */
-.search-bar {
-  border: 1px solid var(--primary-color);
-  border-radius: 25px;
-  padding: 10px 20px;
+.select-input option {
+  background-color: white !important;
+  color: black !important;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+}
+
+input::placeholder, .search-bar::placeholder {
+  color: rgba(255, 255, 255, 0.5); /* Blanc semi-transparent */
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+  -webkit-text-fill-color: white !important;
 }
 
 /* --- Bouton Général --- */
@@ -74,14 +71,9 @@ input:focus, .select-input:focus {
   justify-content: center;
   gap: 10px;
   transition: filter 0.2s;
+
 }
 
 .button-container:hover {
   filter: brightness(0.85);
-}
-
-/* Autofill Fix */
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
-  -webkit-text-fill-color: black !important;
 }

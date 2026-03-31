@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #ce3419;
+  --text-light: #ffffff;
+}
+
+/* 1. Conteneur bloqué à la taille de l'écran */
 .dashboard-container {
   display: flex;
   flex-direction: column;
@@ -9,43 +15,40 @@
   overflow: hidden;
 }
 
+/* 2. Header fixe en haut */
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 70px;
-  z-index: 1100;
+  width: 100%;
+  flex-shrink: 0;
+  z-index: 1000;
+  background-color: #1a1a1a; /* Fond solide pour ne pas voir les films dessous */
 }
 
+/* 3. Zone principale */
 .dashboard-main {
   display: flex;
   flex: 1;
-  margin-top: 70px;
-  height: calc(100vh - 70px);
+  overflow: hidden;
 }
 
+/* 4. Sidebar fixe à gauche */
 .sidebar {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  height: calc(100vh - 70px);
-  z-index: 1050;
+  height: 100%;
+  flex-shrink: 0;
+  z-index: 900;
+  overflow-y: auto; /* Scroll interne si trop d'activités */
 }
 
+/* 5. Zone de contenu (Celle qui scrolle !) */
 .dashboard-content {
   flex: 1;
-  padding: 20px;
-  margin-left: 80px; 
+  padding: 20px 40px;
   overflow-y: auto;
-  color: white;
-  transition: margin-left 0.3s ease;
+  color: var(--text-light);
+  height: 100%;
 }
 
-.sidebar:not(.small) + .dashboard-content {
-  margin-left: 250px;
-}
-
+/* 6. Grille de films */
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -54,8 +57,30 @@
   padding: 20px 0;
 }
 
+/* 7. Bouton Load More (Ajustement hauteur) */
 .load-more-container {
   display: flex;
   justify-content: center;
-  padding: 40px 0;
+  padding: 20px 0 40px 0; /* Réduit pour qu'il soit juste sous la grille */
+  width: 100%;
+}
+
+/* --- Forcer les textes et inputs en blanc --- */
+.input-container label, 
+.select-container label, 
+.input-icon,
+input, 
+.select-input, 
+.search-bar {
+  color: var(--text-light) !important;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Fix pour l'autofill (fond noir, texte blanc) */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+  -webkit-text-fill-color: white !important;
 }
