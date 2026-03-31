@@ -1,21 +1,7 @@
-/* src/App.css */
-
 .App {
   min-height: 100vh;
   width: 100%;
-  background-color: #080202; /* Le noir profond du projet */
+  background-color: #000000;
   color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
-}
-
-/* Si tu veux tester tes composants dans une colonne propre */
-.test-container {
-  width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Espace entre chaque composant */
+  display: block; 
 }

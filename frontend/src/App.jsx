@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import Authentication from './routes/auth/Authentication';
-
-// Placeholder pour le Dashboard (tu le créeras plus tard)
-const Dashboard = ({ userUsername }) => <div className="Dashboard">Welcome, {userUsername}!</div>;
+import Dashboard from './routes/dashboard/Dashboard';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,7 +37,7 @@ function App() {
   return (
     <div className="App">
       {isLoggedIn ? (
-        <Dashboard userUsername={userUsername} />
+        <Dashboard userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
       ) : (
         <Authentication 
           setIsLoggedIn={setIsLoggedIn} 
